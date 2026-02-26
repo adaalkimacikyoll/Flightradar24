@@ -1,41 +1,94 @@
-# FlightRadar24 ReDesign 
+# Flightradar24 — UX Audit & Redesign
 
+![TypeScript](https://img.shields.io/badge/typescript-78%25-3178C6?logo=typescript)
+![iOS](https://img.shields.io/badge/platform-iOS_+_Web-black?logo=apple)
+![Framework](https://img.shields.io/badge/UX_method-5_Levels_Framework-purple)
+![Capacitor](https://img.shields.io/badge/mobile-Capacitor-119EFF?logo=capacitor)
 
-## Running the web app
+A structured usability audit and interactive redesign prototype of the 
+Flightradar24 mobile application, applying the **5 UX Levels framework** 
+(Strategy → Scope → Structure → Skeleton → Surface) to identify and resolve 
+real usability problems.
 
-1. Run `npm install` to install dependencies.
-2. Run `npm run dev` to start the development server.
+## The Problem
 
-## Running the iOS app in Xcode
+The existing Flightradar24 interface has three core usability failures:
 
-This project uses [Capacitor](https://capacitorjs.com/) to package the web app as a native iOS app you can open in Xcode.
+1. **Aircraft are visually indistinguishable** — identical icons make 
+   it impossible to differentiate airlines, aircraft types, or flight status 
+   at a glance
+2. **Weather hazards lack spatial context** — warnings appear as generic 
+   alerts rather than being anchored to specific airspace regions on the map
+3. **Flight detail inspection is inefficient** — information is either 
+   hidden behind too many taps or dumped all at once, with no progressive 
+   disclosure
 
-### First-time setup
+## The Solution
 
-1. **Install dependencies:**  
-   `npm install`
+| Problem | Design Solution |
+|---------|----------------|
+| Indistinguishable aircraft | Color-coded icons by airline/type with a live legend |
+| Decontextualized weather | Geo-anchored hazard overlays on the map layer |
+| Poor information hierarchy | Progressive disclosure — tap once for summary, again for detail |
 
-2. **Build and sync to iOS:**  
-   `npm run ios`  
-   This builds the web app, syncs it to the iOS project, and opens Xcode.
+## Methodology
 
-   Or manually:
-   - `npm run build` — build the web app
-   - `npx cap sync ios` — copy web assets into the iOS project
-   - `npx cap open ios` — open the project in Xcode
+This project follows the **5 UX Levels** framework:
 
-### Running in Xcode
+- **Strategy** — defined user goals and business objectives for the app
+- **Scope** — identified functional gaps vs. user needs
+- **Structure** — redesigned information architecture and navigation flows
+- **Skeleton** — wireframed new interaction patterns
+- **Surface** — built an interactive prototype with the refined visual design
 
-1. Open the project in Xcode (via `npm run ios` or by opening `ios/App/App.xcodeproj`).
-2. Select your target device or simulator.
-3. Click Run (▶) or press Cmd+R to build and run.
+## Tech Stack
 
-### After code changes
+| Layer | Technology |
+|-------|-----------|
+| Prototype | TypeScript + Vite + CSS |
+| Mobile Packaging | Capacitor (iOS) |
+| Design Files | Figma (included as `.zip`) |
 
-When you change the web app code:
+## Running the Prototype
 
-1. Run `npm run build` to rebuild.
-2. Run `npx cap sync ios` to copy the new build into the iOS project.
-3. Build and run again in Xcode.
+**Web:**
+```bash
+npm install
+npm run dev
+```
 
-Or use `npm run ios` to do steps 1–2 and open Xcode.
+**iOS (Xcode):**
+```bash
+npm install
+npm run build
+npx cap sync ios
+npx cap open ios
+# Run with Cmd+R in Xcode
+```
+
+After code changes:
+```bash
+npm run build && npx cap sync ios
+```
+
+## Project Structure
+```
+├── src/              # TypeScript prototype source
+├── ios/              # Capacitor iOS project
+├── build/            # Production build output
+└── Flight Radar Design Main.zip  # Figma design files
+```
+
+## Key Design Decisions
+
+**Color-coded aircraft** solve the identification problem without cluttering 
+the map — colors are perceptually distinct and a collapsible legend keeps 
+the interface clean.
+
+**Geo-anchored weather overlays** treat the map as the primary information 
+layer rather than a backdrop, matching how pilots and enthusiasts actually 
+think about airspace.
+
+**Progressive disclosure** reduces cognitive load by surfacing only what's 
+relevant at each stage of interaction — consistent with established mobile 
+UX patterns for data-dense applications.

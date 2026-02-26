@@ -1,6 +1,5 @@
-# Flight Radar Design Main
+# FlightRadar24 ReDesign 
 
-This is a code bundle for Flight Radar Design Main. The original project is available at https://www.figma.com/design/PINyLy9QkCGdtMyqXV9p80/Flight-Radar-Design-Main.
 
 ## Running the web app
 
